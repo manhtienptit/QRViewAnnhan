@@ -1,0 +1,154 @@
+<div class="absolute inset-0 flex flex-col min-w-0 overflow-hidden">
+
+    <mat-drawer-container
+        class="flex-auto h-full w-full bg-card dark:bg-transparent"
+        (backdropClick)="onBackdropClicked()">
+
+        <!-- Drawer -->
+        <mat-drawer
+            class="w-full dark:bg-gray-900"
+            [mode]="drawerMode"
+            [opened]="false"
+            [position]="'end'"
+            [disableClose]="true"
+            #matDrawer>
+            <router-outlet></router-outlet>
+        </mat-drawer>
+
+        <mat-drawer-content class="flex flex-col">
+
+            <!-- Main -->
+            <div class="flex-auto">
+
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row md:flex-col flex-auto justify-between py-8 px-6 md:px-8 border-b">
+
+                    <!-- Title -->
+                    <div>
+                        <div class="ml-0.5 mt-5 font-medium text-secondary">
+                            <ng-container *ngIf="contactsCount > 0">
+                                {{contactsCount}}
+                            </ng-container>
+                            {{contactsCount | i18nPlural: {
+                            '=0'   : 'No contacts',
+                            'other'   : 'Người dùng'
+                        } }}
+                        </div>
+                    </div>
+
+                    <!-- Main actions -->
+                    <div class="flex items-center mt-4 sm:mt-0 md:mt-4">
+                        <!-- Search -->
+                        <div class="flex-auto">
+                            <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript w-full min-w-50">
+                                <mat-icon
+                                    class="icon-size-5"
+                                    matPrefix
+                                    [svgIcon]="'heroicons_solid:search'"></mat-icon>
+                                <input
+                                    matInput
+                                    [formControl]="searchInputControl"
+                                    [autocomplete]="'off'"
+                                    [placeholder]="'Search contacts'">
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <!-- Contacts list -->
+                <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
+                    <ng-container *ngIf="contacts$ | async as contacts">
+                        <ng-container *ngIf="contacts.length; else noContacts">
+                            <div class="grid">
+                                <div
+                                    class="contact-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
+                                    matSort
+                                    matSortDisableClear>
+                                    <div></div>
+                                    <div
+                                        class="hidden md:block"
+                                        [mat-sort-header]="'sku'">
+                                        Mã
+                                    </div>
+                                    <div [mat-sort-header]="'name'">Tên người dùng</div>
+                                    <div
+                                        class="hidden sm:block"
+                                        [mat-sort-header]="'price'">
+                                        Giá bán
+                                    </div>
+                                    <div
+                                        class="hidden lg:block"
+                                        [mat-sort-header]="'stock'">
+                                        Stock
+                                    </div>
+                                    <div
+                                        class="hidden lg:block"
+                                        [mat-sort-header]="'active'">
+                                        Trạng thái
+                                    </div>
+                                    <div class="hidden sm:block">Thông tin</div>
+                                </div>
+                                <ng-container *ngIf="contacts$ | async as contacts">
+                                  <ng-container *ngFor="let contact of contacts; let i = index; trackBy: trackByFn">
+                                    <a
+                                    class="z-20 flex items-center px-6 py-4 md:px-8 cursor-pointer border-b relative"
+                                    [ngClass]="{'hover:bg-gray-100 dark:hover:bg-hover': !selectedContact || selectedContact.id !== contact._id,
+                                                'bg-primary-50 dark:bg-hover': selectedContact && selectedContact._id === contact._id}"
+
+                                    [routerLink]="['./', contact._id]">
+
+                                    <span *ngIf="contact.status === 'ACTIVE'"
+                                        class="absolute left-0 bottom-0 w-2 h-full bg-green-500 "></span>
+
+                                    <span *ngIf="contact.status === 'INACTIVE'"
+                                          class="absolute left-0 bottom-0 w-2 h-full bg-red-400 "></span>
+
+                                    <div class="flex flex-0 items-center justify-center w-10 h-10 rounded-full overflow-hidden">
+                                        <ng-container class="relative" *ngIf="contact.urlPhoto">
+                                            <img
+                                                class="object-cover w-full h-full"
+                                                [ngClass] = "{'text-gray-500': contact.status === 'INACTIVE'}"
+                                                src="assets/images/avatars/female-18.jpg"
+                                                alt="Contact avatar" />
+                                        </ng-container>
+                                        <ng-container >
+                                            <div class="flex items-center justify-center w-full h-full rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200">
+                                                abcacabc
+                                            </div>
+                                        </ng-container>
+
+                                    </div>
+
+                                    <div class="min-w-0 ml-4">
+                                        <div class="font-bold leading-7 truncate" [ngClass] = "{'text-gray-500': contact.status === 'INACTIVE'}">{{contact.firstName}} {{contact.name}}</div>
+                                        <div class="leading-6 truncate text-secondary" [ngClass] = "{'text-gray-500': contact.status === 'INACTIVE'}">{{contact.phoneNumber}}</div>
+                                        <div class="leading-2 truncate text-secondary" [ngClass] = "{'text-red-400': contact.status === 'INACTIVE',
+                                                                                                     'text-green-500': contact.status === 'ACTIVE'}">{{contact.status === 'INACTIVE' ? 'Đã ngừng hoạt động' : 'Đang hoạt động'}}</div>
+                                    </div>
+
+                                     </a>
+                                    </ng-container>
+                                </ng-container>
+                            </div>
+
+
+                        </ng-container>
+                    </ng-container>
+
+                    <!-- No contacts -->
+                    <ng-template #noContacts>
+                        <div class="p-8 sm:p-16 border-t text-4xl font-semibold tracking-tight text-center">There are no contacts!</div>
+                    </ng-template>
+
+                </div>
+
+            </div>
+
+        </mat-drawer-content>
+
+    </mat-drawer-container>
+
+</div>
