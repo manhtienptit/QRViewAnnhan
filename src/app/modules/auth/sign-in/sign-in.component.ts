@@ -27,6 +27,7 @@ export class AuthSignInComponent implements OnInit
     cers: any[] = [1]
 
     qrInfo$: QRScan;
+    rateList$: any[];
     id: string = '';
 
     /**
@@ -66,16 +67,13 @@ export class AuthSignInComponent implements OnInit
 
                             this.qrInfo$ = (product?.data?.data !== undefined ? product?.data?.data : '');
 
-                            console.log(this.qrInfo$)
+                            this._qrService.getRateList(this.id)
+                                .subscribe((rateList) => {
 
-                            // // Set the selected product
-                            // this.selectedProduct = product;
-                            //
-                            // // Fill the form
-                            // this.selectedProductForm.patchValue(product);
-                            //
-                            // // Mark for check
-                            // this._changeDetectorRef.markForCheck();
+                                    console.log(rateList)
+
+                                });
+
                         });
                 }
             );

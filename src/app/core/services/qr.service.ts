@@ -68,8 +68,25 @@ export class QRService
         }).pipe(
             tap((response) => {
 
-                // console.log(response.data)
+                // this._pagination.next(response.data);
+                // this._products.next(response.data.docs);
 
+            })
+        );
+    }
+
+
+    /**
+     * Get QR by id
+     */
+    getRateList(id: string): Observable<{ data: any }>
+    {
+        return this._httpClient.post<{ data: any }>(`https://app-dev.annhan.asia/v1/product/qr/rate/get`, {
+            data : {
+                id: id,
+            }
+        }).pipe(
+            tap((response) => {
 
                 // this._pagination.next(response.data);
                 // this._products.next(response.data.docs);
