@@ -27,7 +27,33 @@ export class AuthSignInComponent implements OnInit
     cers: any[] = [1]
 
     qrInfo$: QRScan;
-    rateList$: any[];
+    rateList$: any = [
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
+        ];
     id: string = '';
 
     /**

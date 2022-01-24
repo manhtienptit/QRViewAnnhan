@@ -181,9 +181,10 @@
                                                         class="w-12 h-12 rounded-full mr-5"
                                                         src="assets/images/avatars/brian-hughes.jpg"
                                                         alt="Card cover image">
-                                           <mat-form-field class="fuse-mat-textarea fuse-mat-no-subscript w-full">
-                                               <textarea matInput [placeholder]="'Nhập đánh giá của bạn...'" [rows]="3" matTextareaAutosize></textarea>
-                                            </mat-form-field>
+
+                                                   <mat-form-field class="fuse-mat-textarea fuse-mat-no-subscript w-full">
+                                                       <textarea matInput [placeholder]="'Nhập đánh giá của bạn...'" [rows]="3" matTextareaAutosize></textarea>
+                                                   </mat-form-field>
                                                 </div>
                                                 <div class="flex items-center mt-3 ml-auto -mr-3">
                                                     <button
@@ -197,11 +198,12 @@
                                                             [svgIcon]="'heroicons_solid:annotation'"></mat-icon>
                                                     </button>
                                                 </div>
+
                                             </div>
                                             <hr class="border-b mx-4 sm:mx-8 my-0">
                                             <div class="max-h-120 overflow-y-auto">
                                                 <div class="relative flex flex-col mx-4 sm:mx-8 my-6">
-                                                    <ng-container *ngFor="let sup of qrInfo$.Supplies; let i = index; trackBy: trackByFn">
+                                                    <ng-container *ngFor="let cmt of rateList$; let i = index; trackBy: trackByFn">
                                                        <div class="flex items-start">
                                                         <img
                                                             class="w-8 h-8 rounded-full mr-4"
@@ -209,13 +211,20 @@
                                                             alt="Card cover image">
                                                         <div class="flex flex-col mt-0.5">
                                                             <span>
-                                                                <b>Rutherford Brannan</b> Oh, I’m in.. Let’s arrange a trip for the next weekend if you want!
+                                                                <b>{{cmt.FullName}}</b> :  {{cmt.Content}}
                                                             </span>
                                                             <div class="flex items-center text-sm text-secondary mt-2">
-                                                                <span class="mr-2">&bull;</span>
-                                                                <span>17 min</span>
+                                                                <span>{{cmt.TimeSend}}</span>
+                                                                <span class="ml-2 mr-2">&bull;</span>
+                                                                <span>{{cmt.Mobile}}</span>
+                                                            </div>
+                                                            <div class="flex items-center text-sm text-secondary mt-2" >
+                                                                <span >Đánh giá : </span >
+                                                                <b> {{cmt.Rate ?? ''}}</b>
+                                                                <mat-icon class="icon-size-6 text-yellow-500" [svgIcon]="'heroicons_solid:star'"></mat-icon>
                                                             </div>
                                                         </div>
+
                                                     </div>
                                                     </ng-container>
                                                 </div>
