@@ -60,7 +60,7 @@ export class AuthSignInComponent implements OnInit
 
         this._router.queryParams
             .subscribe(params => {
-                    this.id = params.id;
+                    this.id = params.product;
                     this._qrService.getQRInfor(this.id)
                         .subscribe((product) => {
 
