@@ -96,7 +96,7 @@ export class AuthSignInComponent implements OnInit
                             this._qrService.getRateList(this.id)
                                 .subscribe((rateList) => {
 
-                                    console.log(rateList)
+                                    this.rateList$ = (rateList?.data?.ListData !== undefined ? rateList?.data?.ListData : '');
 
                                 });
 
