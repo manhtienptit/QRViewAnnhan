@@ -1,6 +1,6 @@
 export const environment = {
     production: true,
     hmr: false,
-    baseUrl : 'http://manhtien.xyz/api/'
+    baseUrl : 'https://app-dev.annhan.asia/v1/product/'
 
 };

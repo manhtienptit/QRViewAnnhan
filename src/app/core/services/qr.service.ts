@@ -61,7 +61,7 @@ export class QRService
      */
     getQRInfor(id: string): Observable<{ data: any }>
     {
-        return this._httpClient.post<{ data: any }>(`https://app-dev.annhan.asia/v1/product/qr/get`, {
+        return this._httpClient.post<{ data: any }>(`${environment.baseUrl}qr/get`, {
             data : {
                 id: id,
             }
@@ -81,7 +81,7 @@ export class QRService
      */
     getRateList(id: string): Observable<{ data: any }>
     {
-        return this._httpClient.post<{ data: any }>(`https://app-dev.annhan.asia/v1/product/qr/rate/get`, {
+        return this._httpClient.post<{ data: any }>(`${environment.baseUrl}qr/rate/get`, {
             data : {
                 id: id,
             }
