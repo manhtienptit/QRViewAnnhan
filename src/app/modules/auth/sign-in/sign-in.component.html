@@ -94,7 +94,7 @@
                                                 <ng-container class="relative" >
                                                     <img
                                                         class="object-cover w-full h-full"
-                                                        src="assets/images/avatars/female-12.jpg"
+                                                        src="assets/images/avatars/avart.png"
                                                         alt="Contact avatar" />
                                                 </ng-container>
                                             </div>
@@ -176,19 +176,21 @@
 
                                                 <div class="flex flex-col mx-4 sm:mx-8 mt-6 mb-3">
 
+                                                    <div class="h-20">
+                                                        <ngx-star-rating  formControlName="rating1" [id]="'rating'"></ngx-star-rating>
+                                                    </div>
+                                                    
                                                     <div class="flex items-start">
                                                         <img
                                                             class="w-12 h-12 rounded-full mr-5"
-                                                            src="assets/images/avatars/brian-hughes.jpg"
+                                                            src="assets/images/avatars/avart.png"
                                                             alt="Card cover image">
 
                                                         <mat-form-field class="fuse-mat-textarea fuse-mat-no-subscript w-full">
                                                             <textarea matInput [placeholder]="'Nhập đánh giá của bạn...'" [rows]="3" matTextareaAutosize formControlName="rate_val" ></textarea>
                                                         </mat-form-field>
                                                     </div>
-                                                    <div class="h-20">
-                                                        <ngx-star-rating  formControlName="rating1" [id]="'rating'"></ngx-star-rating>
-                                                    </div>
+
                                                     <div class="flex items-center mt-3 ml-auto -mr-3">
                                                         <button
                                                             (click)="sendReview('test review')"
@@ -213,7 +215,7 @@
                                                         <div class="flex items-start">
                                                             <img
                                                                 class="w-8 h-8 rounded-full mr-4"
-                                                                src="assets/images/avatars/male-05.jpg"
+                                                                src="assets/images/avatars/avart.png"
                                                                 alt="Card cover image">
                                                             <div class="flex flex-col mt-0.5">
                                                             <span>
