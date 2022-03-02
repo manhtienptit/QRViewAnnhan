@@ -25,6 +25,7 @@ export class AuthSignInComponent implements OnInit
     signInForm: FormGroup;
     showAlert: boolean = false;
     cers: any[] = [1]
+    productStoreID: number = 1;
 
     qrInfo$: QRScan;
     rateList$: any = [
@@ -55,6 +56,9 @@ export class AuthSignInComponent implements OnInit
         { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
         ];
     id: string = '';
+    rating: number = 2;
+
+    public form: FormGroup;
 
     /**
      * Constructor
@@ -78,16 +82,16 @@ export class AuthSignInComponent implements OnInit
     ngOnInit(): void
     {
         // Create the form
-        this.signInForm = this._formBuilder.group({
-            phoneNumber     : ['', [Validators.required]],
-            password  : ['', Validators.required],
-            rememberMe: ['']
+        this.form = this._formBuilder.group({
+            rating1: [2, Validators.required],
+            rate_val: ['', Validators.required]
         });
 
 
         this._router.queryParams
             .subscribe(params => {
                     this.id = params.product;
+                    this.productStoreID = params.product;
                     this._qrService.getQRInfor(this.id)
                         .subscribe((product) => {
 
@@ -96,7 +100,11 @@ export class AuthSignInComponent implements OnInit
                             this._qrService.getRateList(this.id)
                                 .subscribe((rateList) => {
 
+                                    console.log(rateList)
+
                                     this.rateList$ = (rateList?.data?.ListData !== undefined ? rateList?.data?.ListData : '');
+
+
 
                                 });
 
@@ -110,6 +118,16 @@ export class AuthSignInComponent implements OnInit
         // Get the product by id
 
 
+    }
+
+
+    sendReview(value : string) : void {
+        this._qrService.sendRate(this.id , this.form.value.rating1 , this.qrInfo$.Info, this.form.value.rate_val)
+            .subscribe((product) => {
+                 alert('Gửi đánh giá thành công!')
+                location.reload();
+
+            });
     }
 
     // -----------------------------------------------------------------------------------------------------

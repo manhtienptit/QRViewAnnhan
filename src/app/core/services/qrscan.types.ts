@@ -1,6 +1,6 @@
 export interface QRScan
 {
-    Info: string[];
+    Info: any;
     Supplies: string[];
     Cert: string[];
 

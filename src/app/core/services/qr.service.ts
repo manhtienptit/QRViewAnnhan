@@ -77,13 +77,36 @@ export class QRService
 
 
     /**
-     * Get QR by id
+     * Get QR rate list
      */
     getRateList(id: string): Observable<{ data: any }>
     {
         return this._httpClient.post<{ data: any }>(`${environment.baseUrl}qr/rate/get`, {
             data : {
                 id: id,
+            }
+        }).pipe(
+            tap((response) => {
+
+                // this._pagination.next(response.data);
+                // this._products.next(response.data.docs);
+
+            })
+        );
+    }
+
+    /**
+     * send QR rate list
+     */
+    sendRate(ProductStoreId: string,Rate: string,Infor : any,Content: string): Observable<{ data: any }>
+    {
+        return this._httpClient.post<{ data: any }>(`${environment.baseUrl}qr/rate`, {
+            data : {
+                ProductStoreId: ProductStoreId,
+                Rate: Rate,
+                FullName: Infor.TenCoSo,
+                Mobile: Infor.Mobile,
+                Content: Content
             }
         }).pipe(
             tap((response) => {

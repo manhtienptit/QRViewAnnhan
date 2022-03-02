@@ -3,7 +3,6 @@
 
 /* Include the core Angular Material styles */
 @include mat.core();
-
 /* Create a base theme without color.
     This will globally set the density and typography for all future color themes. */
 @include mat.all-component-themes((

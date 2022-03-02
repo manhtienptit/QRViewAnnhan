@@ -20,6 +20,10 @@ import {NotificationsModule} from "app/layout/common/notifications/notifications
 import {ShortcutsModule} from "app/layout/common/shortcuts/shortcuts.module";
 import {UserModule} from "app/layout/common/user/user.module";
 import {SearchModule} from "app/layout/common/search/search.module";
+import { NgxStarRatingModule } from 'ngx-star-rating';
+
+import { BarRatingModule } from 'ngx-bar-rating';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
     declarations: [
         AuthSignInComponent
@@ -43,7 +47,10 @@ import {SearchModule} from "app/layout/common/search/search.module";
         NotificationsModule,
         SearchModule,
         ShortcutsModule,
+        BarRatingModule,
+        FontAwesomeModule,
         UserModule,
+        NgxStarRatingModule,
     ],
     exports     : [
         AuthSignInComponent

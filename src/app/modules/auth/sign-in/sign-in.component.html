@@ -1,136 +1,133 @@
 <div class="flex flex-col flex-auto items-center sm:justify-center min-w-0 md:p-8">
-        <div class="w-full sm:w-auto">
-            <div class="w-full sm:w-100 mx-auto sm:mx-0 green">
-                <!-- Logo -->
-                <div class="w-full h-16 bg-green-400">
-                    <div class="flex flex-row items-center justify-between">
-                        <div class="text-lg font-medium tracking-tight">
-                            <img
-                                class="w-40"
-                                src="assets/images/logo/logo_title_qr.png">
-                        </div>
-                        <div class="mt-3 sm:mt-0 sm:ml-2">
-                            <languages></languages>
-                        </div>
+    <div class="w-full sm:w-auto">
+        <div class="w-full sm:w-100 mx-auto sm:mx-0 green">
+            <!-- Logo -->
+            <div class="w-full h-16 bg-green-400">
+                <div class="flex flex-row items-center justify-between">
+                    <div class="text-lg font-medium tracking-tight">
+                        <img
+                            class="w-40"
+                            src="assets/images/logo/logo_title_qr.png">
+                    </div>
+                    <div class="mt-3 sm:mt-0 sm:ml-2">
+                        <languages></languages>
                     </div>
                 </div>
+            </div>
 
-                <!-- Main Form -->
+            <!-- Main Form -->
 
-                <div class="flex-auto mt-4 sm:mt-6">
-                    <div class="w-full">
+            <div class="flex-auto mt-4 sm:mt-6">
+                <div class="w-full">
 
-                        <!-- Tabs -->
-                        <mat-tab-group
-                            class="w-full"
-                            [animationDuration]="'0'">
+                    <!-- Tabs -->
+                    <mat-tab-group
+                        class="w-full"
+                        [animationDuration]="'0'">
 
-                            <!-- Home -->
-                            <mat-tab label="Giới thiệu">
-                                <ng-template  matTabContent>
-                                    <div class="bg-gray-100 w-full min-w-0 ">
-                                        <div class="flex flex-col w-full border-t border-b">
-                                            <div class="flex flex-row items-center justify-between py-4 px-0.5 ">
-                                                <div class="flex flex-col ">
-                                                    <div class="font-bold text-green-600">{{qrInfo$.Info?.ProductName ?? 'Tên sản phẩm'}}</div>
-                                                    <div class="flex flex-col sm:flex-row sm:items-center -ml-0.5 mt-2 sm:mt-1 space-y-1 sm:space-y-0 sm:space-x-3">
-                                                        <ng-container >
-                                                            <div class="flex items-center">
-                                                                <mat-icon
-                                                                    class="icon-size-5 text-hint"
-                                                                    [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                                                <div class="ml-1.5 text-md text-secondary">ID : {{qrInfo$.Info?.ProductCode ?? ''}}</div>
-                                                            </div>
-                                                        </ng-container>
-                                                     </div>
+                        <!-- Home -->
+                        <mat-tab label="Giới thiệu">
+                            <ng-template  matTabContent>
+                                <div class="bg-gray-100 w-full min-w-0 ">
+                                    <div class="flex flex-col w-full border-t border-b">
+                                        <div class="flex flex-row items-center justify-between py-4 px-0.5 ">
+                                            <div class="flex flex-col ">
+                                                <div class="font-bold text-gray-600">{{qrInfo$.Info?.ProductName ?? 'Tên sản phẩm'}}</div>
+                                                <div class="flex flex-col sm:flex-row sm:items-center -ml-0.5 mt-2 sm:mt-1 space-y-1 sm:space-y-0 sm:space-x-3">
+                                                    <ng-container >
+                                                        <div class="flex items-center">
+                                                            <div class="ml-1.5 text-md text-secondary text-green-600">ID : {{qrInfo$.Info?.ProductCode ?? ''}}</div>
+                                                        </div>
+                                                    </ng-container>
                                                 </div>
-                                                <button mat-icon-button>
-                                                    <div class="ml-3 text-2xl text-secondary">{{qrInfo$.Info?.RateCount ?? ''}}</div>
-                                                    <mat-icon class="icon-size-7 text-yellow-500" [svgIcon]="'heroicons_solid:star'"></mat-icon>
-                                                </button>
                                             </div>
+                                            <button mat-icon-button>
+                                                <div class="ml-3 text-2xl text-secondary">{{qrInfo$.Info?.RateCount ?? ''}}</div>
+                                                <mat-icon class="icon-size-7 text-green-500" [svgIcon]="'heroicons_solid:star'"></mat-icon>
+                                            </button>
                                         </div>
-                                        <div class="flex flex-col mt-5 items-center">
-                                            <div class="w-full h-80 border rounded overflow-hidden">
-                                                <ng-container>
-                                                    <img
-                                                        class="h-80 object-cover"
-                                                        [src]= qrInfo$.Info?.ProductImageNames[0].link
-                                                    >
-                                                </ng-container>
+                                    </div>
+                                    <div class="flex flex-col mt-5 items-center">
+                                        <div class="w-full h-80 border rounded overflow-hidden">
+                                            <ng-container>
+                                                <img
+                                                    class="h-80 object-cover"
+                                                    [src]= qrInfo$.Info?.ProductImageNames[0].link
+                                                >
+                                            </ng-container>
 
-                                            </div>
-                                            <div class="flex items-center mt-2 whitespace-nowrap">
-                                                <button
-                                                    mat-icon-button
-                                                    (click)="cycleImages(false)">
-                                                    <mat-icon
-                                                        class="icon-size-5"
-                                                        [svgIcon]="'heroicons_solid:arrow-narrow-left'"></mat-icon>
-                                                </button>
-                                                <span class="font-sm mx-2">
-                                                    {{qrInfo$.Info?.ProductImageNames?.length > 0 ? '1' : '0'}} of {{qrInfo$.Info?.ProductImageNames?.length ?? '0'}}
-                                                </span>
-                                                <button
-                                                    mat-icon-button
-                                                    (click)="cycleImages(true)">
-                                                    <mat-icon
-                                                        class="icon-size-5"
-                                                        [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
-                                                </button>
-                                            </div>
                                         </div>
-                                        <ng-container >
-                                            <div class="flex flex-col border-t">
-                                                <div class="pb-1  mt-5 font-extrabold tracking-tight">Giới thiệu</div>
-                                                <div
-                                                    class="max-w-none ml-2 prose prose-sm">
+                                        <div class="flex items-center mt-2 whitespace-nowrap">
+                                            <button
+                                                mat-icon-button
+                                                (click)="cycleImages(false)">
+                                                <mat-icon
+                                                    class="icon-size-5"
+                                                    [svgIcon]="'heroicons_solid:arrow-narrow-left'"></mat-icon>
+                                            </button>
+                                            <span class="font-sm mx-2">
+                                                  Ảnh số {{qrInfo$.Info?.ProductImageNames?.length > 0 ? '1' : '0'}} / {{qrInfo$.Info?.ProductImageNames?.length ?? '0'}}
+                                                </span>
+                                            <button
+                                                mat-icon-button
+                                                (click)="cycleImages(true)">
+                                                <mat-icon
+                                                    class="icon-size-5"
+                                                    [svgIcon]="'heroicons_solid:arrow-narrow-right'"></mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <ng-container >
+                                        <div class="flex flex-col border-t">
+                                            <div class="pb-1  mt-5 font-extrabold tracking-tight">Giới thiệu</div>
+                                            <div
+                                                class="max-w-none ml-2 prose prose-sm">
                                                     <span class="font-sm mx-2">
                                                        {{qrInfo$.Info?.Introduction ?? ''}}
                                                     </span>
-                                                </div>
-                                            </div>
-                                        </ng-container>
-                                        <div class="flex flex-col w-full border-t border-b">
-                                            <div class="flex flex-row items-center justify-between py-4 px-0.5 ">
-                                                <div class="flex lg:flex-shrink items-center justify-center w-10 h-10 rounded-full overflow-hidden">
-                                                    <ng-container class="relative" >
-                                                        <img
-                                                            class="object-cover w-full h-full"
-                                                            src="assets/images/avatars/female-12.jpg"
-                                                            alt="Contact avatar" />
-                                                    </ng-container>
-                                                </div>
-                                                <div class="flex flex-col flex-1 ml-3">
-                                                    <div class="font-bold text-green-600">{{qrInfo$.Info?.TenCoSo ?? ''}}</div>
-                                                    <div class="flex flex-col sm:flex-row sm:items-center -ml-0.5 mt-2 sm:mt-1 space-y-1 sm:space-y-0 sm:space-x-3">
-                                                        <ng-container >
-                                                            <div class="flex items-center">
-                                                                <mat-icon
-                                                                    class="icon-size-5 text-hint"
-                                                                    [svgIcon]="'heroicons_solid:phone'"></mat-icon>
-                                                                <div class="ml-1.5 text-md text-secondary">{{qrInfo$.Info?.Mobile ?? ''}}</div>
-                                                            </div>
-                                                        </ng-container>
-                                                    </div>
-                                                </div>
-                                                <button mat-icon-button>
-                                                    <img
-                                                        class="w-20"
-                                                        src="assets/images/logo/ic_web.png">
-                                                </button>
-                                                <button mat-icon-button class="ml-4">
-                                                    <img
-                                                        class="w-20"
-                                                        src="assets/images/logo/ic_phone.png">
-                                                </button>
                                             </div>
                                         </div>
+                                    </ng-container>
+                                    <div class="flex flex-col w-full border-t border-b">
+                                        <div class="flex flex-row items-center justify-between py-4 px-0.5 ">
+                                            <div class="flex lg:flex-shrink items-center justify-center w-10 h-10 rounded-full overflow-hidden">
+                                                <ng-container class="relative" >
+                                                    <img
+                                                        class="object-cover w-full h-full"
+                                                        src="assets/images/avatars/female-12.jpg"
+                                                        alt="Contact avatar" />
+                                                </ng-container>
+                                            </div>
+                                            <div class="flex flex-col flex-1 ml-3">
+                                                <div class="font-bold text-black-600">{{qrInfo$.Info?.TenCoSo ?? ''}}</div>
+                                                <div class="flex flex-col sm:flex-row sm:items-center -ml-0.5 mt-2 sm:mt-1 space-y-1 sm:space-y-0 sm:space-x-3">
+                                                    <ng-container >
+                                                        <div class="flex items-center">
+                                                            <mat-icon
+                                                                class="icon-size-5 text-hint"
+                                                                [svgIcon]="'heroicons_solid:phone'"></mat-icon>
+                                                            <div class="ml-1.5 text-md text-secondary">{{qrInfo$.Info?.Mobile ?? ''}}</div>
+                                                        </div>
+                                                    </ng-container>
+                                                </div>
+                                            </div>
+                                            <button mat-icon-button>
+                                                <img
+                                                    class="w-20"
+                                                    src="assets/images/logo/ic_web.png">
+                                            </button>
+                                            <button mat-icon-button class="ml-4">
+                                                <img
+                                                    class="w-20"
+                                                    src="assets/images/logo/ic_phone.png">
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                        <!-- -->
-                                        <fuse-card
-                                            class="flex flex-col w-full mt-8"
-                                            #expandableCard02="fuseCard">
+                                    <!-- -->
+                                    <fuse-card
+                                        class="flex flex-col w-full mt-8"
+                                        #expandableCard02="fuseCard">
                                         <div class="flex flex-col w-full ">
                                             <div class="flex flex-row items-center justify-between py-4 px-0.5  ">
                                                 <div class="flex flex-col flex-1 ml-3">
@@ -156,18 +153,18 @@
                                                                 class="px-3 sm:-mr-4"
                                                                 mat-button
                                                                 (click)="expandableCard02.expanded = !expandableCard02.expanded">
-                                                                <span class="mr-1">{{qrInfo$.Info?.RateValue ?? ''}} đánh giá người dùng</span>
+                                                                <span class="mr-1"> Đánh giá người dùng ({{rateList$.length ?? '0'}})</span>
                                                                 <mat-icon
-                                                                    class="icon-size-5 transform transition-transform ease-in-out duration-150 rotate-0"
+                                                                    class="icon-size-5 transform transition-transform ease-in-out duration-150 rotate-0 "
                                                                     [ngClass]="{'rotate-180': expandableCard02.expanded}"
                                                                     [svgIcon]="'heroicons_solid:chevron-down'"></mat-icon>
                                                             </button>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <button mat-icon-button>
-                                                    <div class="ml-3 text-1xl text-secondary">{{qrInfo$.Info?.RateCount ?? ''}}</div>
-                                                    <mat-icon class="icon-size-6 text-yellow-500" [svgIcon]="'heroicons_solid:star'"></mat-icon>
+                                                <button mat-icon-button >
+                                                    <div class="ml-3 text-2xl text-secondary">{{qrInfo$.Info?.RateCount ?? ''}}</div>
+                                                    <mat-icon class="icon-size-6 text-yellow-500 mr-5" [svgIcon]="'heroicons_solid:star'"></mat-icon>
                                                 </button>
                                             </div>
 
@@ -175,155 +172,169 @@
 
                                         <ng-container fuseCardExpansion>
                                             <hr class="border-b m-0">
-                                            <div class="flex flex-col mx-4 sm:mx-8 mt-6 mb-3">
-                                                <div class="flex items-start">
-                                                    <img
-                                                        class="w-12 h-12 rounded-full mr-5"
-                                                        src="assets/images/avatars/brian-hughes.jpg"
-                                                        alt="Card cover image">
+                                            <form [formGroup]="form">
 
-                                                   <mat-form-field class="fuse-mat-textarea fuse-mat-no-subscript w-full">
-                                                       <textarea matInput [placeholder]="'Nhập đánh giá của bạn...'" [rows]="3" matTextareaAutosize></textarea>
-                                                   </mat-form-field>
-                                                </div>
-                                                <div class="flex items-center mt-3 ml-auto -mr-3">
-                                                    <button
-                                                        class="w-full"
-                                                        mat-flat-button
-                                                        [color]="'primary'">
-                                                        Gửi đánh giá
-                                                        <mat-icon
-                                                            class="icon-size-5 ml-2"
-                                                            matPrefix
-                                                            [svgIcon]="'heroicons_solid:annotation'"></mat-icon>
-                                                    </button>
-                                                </div>
+                                                <div class="flex flex-col mx-4 sm:mx-8 mt-6 mb-3">
 
-                                            </div>
+                                                    <div class="flex items-start">
+                                                        <img
+                                                            class="w-12 h-12 rounded-full mr-5"
+                                                            src="assets/images/avatars/brian-hughes.jpg"
+                                                            alt="Card cover image">
+
+                                                        <mat-form-field class="fuse-mat-textarea fuse-mat-no-subscript w-full">
+                                                            <textarea matInput [placeholder]="'Nhập đánh giá của bạn...'" [rows]="3" matTextareaAutosize formControlName="rate_val" ></textarea>
+                                                        </mat-form-field>
+                                                    </div>
+                                                    <div class="h-20">
+                                                        <ngx-star-rating  formControlName="rating1" [id]="'rating'"></ngx-star-rating>
+                                                    </div>
+                                                    <div class="flex items-center mt-3 ml-auto -mr-3">
+                                                        <button
+                                                            (click)="sendReview('test review')"
+                                                            class="w-full text-white"
+                                                            [color]="'primary'"
+                                                            mat-flat-button>
+                                                            Gửi đánh giá
+                                                            <mat-icon
+                                                                class="icon-size-5 ml-2"
+                                                                matPrefix
+                                                                [svgIcon]="'heroicons_solid:pencil'"></mat-icon>
+                                                        </button>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+
                                             <hr class="border-b mx-4 sm:mx-8 my-0">
                                             <div class="max-h-120 overflow-y-auto">
                                                 <div class="relative flex flex-col mx-4 sm:mx-8 my-6">
                                                     <ng-container *ngFor="let cmt of rateList$; let i = index; trackBy: trackByFn">
-                                                       <div class="flex items-start">
-                                                        <img
-                                                            class="w-8 h-8 rounded-full mr-4"
-                                                            src="assets/images/avatars/male-05.jpg"
-                                                            alt="Card cover image">
-                                                        <div class="flex flex-col mt-0.5">
+                                                        <div class="flex items-start">
+                                                            <img
+                                                                class="w-8 h-8 rounded-full mr-4"
+                                                                src="assets/images/avatars/male-05.jpg"
+                                                                alt="Card cover image">
+                                                            <div class="flex flex-col mt-0.5">
                                                             <span>
                                                                 <b>{{cmt.FullName}}</b> :  {{cmt.Content}}
                                                             </span>
-                                                            <div class="flex items-center text-sm text-secondary mt-2">
-                                                                <span>{{cmt.TimeSend}}</span>
-                                                                <span class="ml-2 mr-2">&bull;</span>
-                                                                <span>{{cmt.Mobile}}</span>
-                                                            </div>
-                                                            <div class="flex items-center text-sm text-secondary mt-2" >
-                                                                <span >Đánh giá : </span >
-                                                                <b> {{cmt.Rate ?? ''}}</b>
-                                                                <mat-icon class="icon-size-6 text-yellow-500" [svgIcon]="'heroicons_solid:star'"></mat-icon>
-                                                            </div>
-                                                        </div>
+                                                                <div class="flex items-center text-sm text-secondary mt-2">
+                                                                    <mat-icon
+                                                                        class="icon-size-5 text-hint"
+                                                                        [svgIcon]="'heroicons_solid:phone'"></mat-icon> <span>{{cmt.Mobile}}</span>
+                                                                </div>
+                                                                <div class="flex items-center text-sm text-secondary mt-2">
+                                                                    <span>{{cmt.TimeSend | date: 'HH:mm dd-MM-yyyy'}}</span>
 
-                                                    </div>
+                                                                </div>
+                                                                <div class="flex items-center text-sm text-secondary mt-2" >
+                                                                    <span >Đánh giá : </span >
+                                                                    <b> {{cmt.Rate ?? ''}}</b>
+                                                                    <mat-icon class="icon-size-6 text-yellow-500" [svgIcon]="'heroicons_solid:star'"></mat-icon>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
                                                     </ng-container>
                                                 </div>
                                             </div>
                                         </ng-container>
-                                        </fuse-card>
+                                    </fuse-card>
 
-                                        <hr class="border-b mx-4 sm:mx-8 my-0">
-                                        <div class="flex-auto  prose prose-sm mt-10 border-t ">
-                                            <p>
-                                                <a
-                                                    (href) = "qrInfo$.Info?.VideoGioiThieu"
-                                                    rel="noreferrer"
-                                                    target="_blank">Video giới thiệu
-                                                </a>
-                                            </p>
-                                        </div>
-                                        <div class="flex-auto  prose prose-sm">
-                                            <p>
-                                        <a
-                                            (href) = "qrInfo$.Info?.VideoHuongDan"
-                                            rel="noreferrer"
-                                            target="_blank">Video hướng dẫn
-                                        </a>
-                                            </p>
-                                        </div>
-
+                                    <hr class="border-b mx-4 sm:mx-8 my-0">
+                                    <div class="flex-auto  prose prose-sm mt-10 border-t ">
+                                        <p>
+                                            <a
+                                                (href) = "qrInfo$.Info?.VideoGioiThieu"
+                                                rel="noreferrer"
+                                                target="_blank">Video giới thiệu
+                                            </a>
+                                        </p>
                                     </div>
-                                </ng-template>
-                            </mat-tab>
-
-                            <!-- Budget -->
-                            <mat-tab label="Xuất xứ">
-                                <ng-template matTabContent>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full min-w-0">
-                                        <div class="flex w-full border-t border-b h-15 items-center py-4">
-                                          <div class="font-bold text-black-600">Thông tin sản phẩm</div>
-                                        </div>
+                                    <div class="flex-auto  prose prose-sm">
+                                        <p>
+                                            <a
+                                                (href) = "qrInfo$.Info?.VideoHuongDan"
+                                                rel="noreferrer"
+                                                target="_blank">Video hướng dẫn
+                                            </a>
+                                        </p>
                                     </div>
 
-                                    <div class="relative w-full h-68 px-8 sm:px-12 bg-accent-100 dark:bg-accent-700">
-                                        <!-- Background -->
-                                        <ng-container >
-                                            <img
-                                                class="absolute inset-0 object-cover w-full h-full"
-                                                src="assets/images/logo/bg_source.png">
-                                        </ng-container>
+                                </div>
+                            </ng-template>
+                        </mat-tab>
 
-                                        <div class="flex flex-col items-center justify-start w-full">
-                                            <button mat-icon-button>
-                                                <a class="text-md text-white">Thành phần : {{qrInfo$.Info?.ProductThanhPhan}}</a>
-                                            </button>
+                        <!-- Budget -->
+                        <mat-tab label="Xuất xứ">
+                            <ng-template matTabContent>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full min-w-0">
+                                    <div class="flex w-full border-t border-b h-15 items-center py-4">
+                                        <div class="font-bold text-black-600">Thông tin sản phẩm</div>
+                                    </div>
+                                </div>
 
-                                            <button  mat-icon-button>
-                                                <a class="text-md text-white">Hạn SD : {{qrInfo$.Info?.ProductHanSD}}</a>
-                                            </button>
+                                <div class="relative md:flex flex-auto items-center justify-center h-68 overflow-hidden ">
+                                    <!-- Background - @formatter:off -->
+                                    <!-- Rings -->
+                                    <img
+                                        class="absolute w-full h-full"
+                                        src="assets/images/logo/bg_source.png">
+                                    <!-- @formatter:on -->
+                                    <!-- Content -->
+                                    <div class="z-10 relative w-full max-w-2xl">
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white">
+                                            Thành phần : {{qrInfo$.Info?.ProductThanhPhan}}
+                                        </div>
 
-                                            <button  mat-icon-button>
-                                                <a class="text-md text-white">Nơi SX : {{qrInfo$.Info?.ProductNoiSX}}</a>
-                                            </button>
-
-                                            <button  mat-icon-button>
-                                                <a class="text-md text-white">Công dụng : {{qrInfo$.Info?.ProductCongDung}}</a>
-                                            </button>
-
-                                            <button  mat-icon-button>
-                                                <a class="text-md text-white">Cách dùng : {{qrInfo$.Info?.ProductCachDung}}</a>
-                                            </button>
-
-                                            <button  mat-icon-button>
-                                                <a class="text-md text-white">Quy trình : {{qrInfo$.Info?.ProductQuyCachDongGoi}}</a>
-                                            </button>
-
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white">
+                                            Hạn SD : {{qrInfo$.Info?.ProductHanSD}}
+                                        </div>
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white">
+                                            Nơi SX : {{qrInfo$.Info?.ProductNoiSX}}
+                                        </div>
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white">
+                                            Công dụng : {{qrInfo$.Info?.ProductCongDung}}
+                                        </div>
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white">
+                                            Cách dùng : {{qrInfo$.Info?.ProductCachDung}}
+                                        </div>
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white">
+                                            Qui cách đóng gói : {{qrInfo$.Info?.ProductQuyCachDongGoi}}
                                         </div>
 
 
                                     </div>
-
-                                    <div class="flex flex-row items-center justify-between border-t border-b mt-3">
-                                        <div class="text-lg font-medium tracking-tight">
-                                            <img
-                                                class="w-full"
-                                                src="assets/images/logo/bg_cer.png">
-                                        </div>
+                                </div>
+                                <div class="flex flex-row items-center justify-between border-t border-b mt-3">
+                                    <div class="text-lg font-medium tracking-tight">
+                                        <img
+                                            class="w-full"
+                                            src="assets/images/logo/bg_cer.png">
                                     </div>
+                                </div>
 
-                                    <ng-container>
-                                        <ng-container *ngFor="let sup of qrInfo$.Supplies; let i = index; trackBy: trackByFn">
-                                            <fuse-card
-                                                class="flex flex-col max-w-140 w-full mt-5"
-                                                #expandableCard02="fuseCard">
+                                <ng-container>
+                                    <ng-container *ngFor="let sup of qrInfo$.Supplies; let i = index; trackBy: trackByFn">
+                                        <fuse-card
+                                            class="flex flex-col max-w-140 w-full mt-5"
+                                            #expandableCard02="fuseCard">
                                             <div class="flex flex-row items-center justify-between py-4 px-0.5 border-b">
                                                 <div class="flex flex-col flex-1 ml-3">
                                                     <div class="font-bold text-green-600">
-                                                        <mat-icon
-                                                            class="icon-size-5 mr-2"
-                                                            matPrefix
-                                                            [svgIcon]="'heroicons_solid:search'"></mat-icon>
-                                                        Đơn vị cung cấp vật tư</div>
+                                                        <img *ngIf="sup.DetailType === 'DONVISANXUAT'" class="w-5 h-5" src="assets/icons/ic_1.png">
+                                                        <img *ngIf="sup.DetailType === 'DONVICUNGCAPVATTU'" class="w-5 h-5" src="assets/icons/ic_2.png">
+                                                        <img *ngIf="sup.DetailType === 'COSOCHEBIEN'" class="w-5 h-5" src="assets/icons/ic_3.png">
+                                                        <img *ngIf="sup.DetailType === 'DONVIVANCHUYEN'" class="w-5 h-5" src="assets/icons/ic_4.png">
+                                                        <img *ngIf="sup.DetailType === 'DONVIPHANPHOI'" class="w-5 h-5" src="assets/icons/ic_5.png">
+
+                                                        <a *ngIf="sup.DetailType === 'DONVISANXUAT'"> Đơn vị sản xuất </a>
+                                                        <a *ngIf="sup.DetailType === 'DONVICUNGCAPVATTU'"> Đơn vị cung cấp vật tư </a>
+                                                        <a *ngIf="sup.DetailType === 'COSOCHEBIEN'"> Cơ sở chế biến </a>
+                                                        <a *ngIf="sup.DetailType === 'DONVIVANCHUYEN'"> Đơn vị vận chuyển </a>
+                                                        <a *ngIf="sup.DetailType === 'DONVIPHANPHOI'"> Đơn vị phân phối </a>
+                                                    </div>
                                                     <div class="text-md text-secondary">Tên điểm : {{sup.CompanyName}}</div>
                                                     <div class="text-md text-secondary">Người liên hệ : {{sup.PersonName}} </div>
                                                     <div class="text-md text-secondary">Điện thoại : {{sup.Mobile}}</div>
@@ -332,87 +343,90 @@
 
                                                 </div>
                                             </div>
-                                            </fuse-card>
-                                        </ng-container>
+                                        </fuse-card>
                                     </ng-container>
-                                </ng-template>
-                            </mat-tab>
+                                </ng-container>
+                            </ng-template>
+                        </mat-tab>å
 
-                            <!-- Team -->
-                            <mat-tab label="Chứng nhận">
-                                <ng-template matTabContent>
-                                    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full min-w-0">
-                                        <div class="flex w-full border-t border-b h-15 items-center py-4">
-                                            <div class="font-bold text-black-600">Chứng nhận ({{qrInfo$.Cert?.length ?? ''}})</div>
-                                        </div>
+                        <!-- Team -->
+                        <mat-tab label="Chứng nhận">
+                            <ng-template matTabContent>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full min-w-0">
+                                    <div class="flex w-full border-t border-b h-15 items-center py-4">
+                                        <div class="font-bold text-black-600">Chứng nhận ({{qrInfo$.Cert?.length ?? ''}})</div>
                                     </div>
-                                    <ng-container>
+                                </div>
+                                <ng-container>
 
-                                        <ng-container *ngFor="let cer of qrInfo$.Cert; let i = index; trackBy: trackByFn">
-                                            <div class="flex flex-row items-center justify-between py-4 px-0.5 border-b">
-                                                <div class="flex lg:flex-shrink items-center justify-center w-20 h-20 overflow-hidden">
-                                                    <ng-container class="relative" >
-                                                        <img
-                                                            class="object-cover w-full h-full"
-                                                            [src]= cer?.ImgNames[0]?.link
-                                                            alt="Contact avatar" />
-                                                    </ng-container>
-                                                </div>
-                                                <div class="flex flex-col flex-1 ml-3">
-                                                    <div class="font-bold text-green-600">{{cer.CertName}}</div>
-                                                    <div class="text-md text-secondary">Mã : {{cer.CertId}}</div>
-                                                    <div class="text-md text-secondary">Ngày chứng nhận : {{cer.IssueDate | date: 'dd-MM-yyy'}}</div>
-                                                    <div class="text-md text-secondary">Chứng nhận bởi : {{cer.CertName}}</div>
-                                                    <div class="text-md text-secondary">Hạn : {{cer.IssueExpire | date: 'dd-MM-yyy'}}</div>
-
-                                                </div>
+                                    <ng-container *ngFor="let cer of qrInfo$.Cert; let i = index; trackBy: trackByFn">
+                                        <div class="flex flex-row items-center justify-between py-4 px-0.5 border-b">
+                                            <div class="flex lg:flex-shrink items-center justify-center w-20 h-20 overflow-hidden">
+                                                <ng-container class="relative" >
+                                                    <img
+                                                        class="object-cover w-full h-full"
+                                                        [src]= cer?.ImgNames[0]?.link
+                                                        alt="Contact avatar" />
+                                                </ng-container>
                                             </div>
-                                        </ng-container>
+                                            <div class="flex flex-col flex-1 ml-3">
+                                                <div class="font-bold text-green-600">{{cer.CertName}}</div>
+                                                <div class="text-md text-secondary">Mã : {{cer.CertId}}</div>
+                                                <div class="text-md text-secondary">Ngày chứng nhận : {{cer.IssueDate | date: 'dd-MM-yyy'}}</div>
+                                                <div class="text-md text-secondary">Chứng nhận bởi : {{cer.CertName}}</div>
+                                                <div class="text-md text-secondary">Hạn : {{cer.IssueExpire | date: 'dd-MM-yyy'}}</div>
 
+                                            </div>
+                                        </div>
                                     </ng-container>
-                                </ng-template>
-                            </mat-tab>
 
-                        </mat-tab-group>
+                                </ng-container>
+                            </ng-template>
+                        </mat-tab>
 
-                    </div>
+                    </mat-tab-group>
+
                 </div>
-
-                <!-- Bottom -->
-
-                <div class="flex flex-row items-center justify-between">
-                    <div class="text-lg font-medium tracking-tight">
-                        <img
-                            class="w-full"
-                            src="assets/images/logo/bg_qr.png">
-                    </div>
-                </div>
-
-                <div class="h-10 flex flex-row w-full mt-5">
-                    <a class="text-lg font-medium tracking-tight mr-2 ml-4"
-                       target="_blank"
-                       href = "https://apps.apple.com/au/app/an-nhan/id1582748587">
-                        <img
-                            class="w-full"
-                            src="assets/images/logo/ic_appstore.png">
-                    </a>
-
-                    <a class="text-lg font-medium tracking-tight mr-2 ml-4"
-                       target="_blank"
-                       href = "https://play.google.com/store/apps/details?id=com.vn.annhan">
-                        <img
-                            class="w-full"
-                            src="assets/images/logo/ic_android.png">
-                    </a>
-                </div>
-
-                <div class="w-full h-20 mt-10 bg-black flex items-center py-4">
-                        <div class="flex w-full items-center mt-2 whitespace-nowrap">
-                            <span class=" text-white">Bản quyền bởi: Annhan.asia</span>
-                        </div>
-                </div>
-
-
             </div>
+
+            <!-- Bottom -->
+
+            <div class="flex flex-row items-center justify-between">
+                <div class="text-lg font-medium tracking-tight">
+                    <img
+                        class="w-full"
+                        src="assets/images/logo/bg_qr.png">
+                </div>
+            </div>
+
+            <div class="h-10 flex flex-row w-full mt-5">
+                <a class="text-lg font-medium tracking-tight mr-2 ml-4"
+                   target="_blank"
+                   href = "https://apps.apple.com/au/app/an-nhan/id1582748587">
+                    <img
+                        class="w-full"
+                        src="assets/images/logo/ic_appstore.png">
+                </a>
+
+                <a class="text-lg font-medium tracking-tight mr-2 ml-4"
+                   target="_blank"
+                   href = "https://play.google.com/store/apps/details?id=com.vn.annhan">
+                    <img
+                        class="w-full"
+                        src="assets/images/logo/ic_android.png">
+                </a>
+            </div>
+
+            <div class="w-full h-20 mt-10 bg-black flex items-center">
+                <div class="flex w-full items-center mt-2 ml-20 whitespace-nowrap">
+                            <span class="text-white">Bản quyền bởi:<a class="text-lg fuse-highlight font-medium tracking-tight mr-2 ml-4"
+                                                                      target="_blank"
+                                                                      href = "https://annhan.asia">Annhan.asia</a>
+                            </span>
+                </div>
+            </div>
+
+
         </div>
+    </div>
 </div>
