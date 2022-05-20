@@ -27,6 +27,13 @@ export class AuthSignInComponent implements OnInit
     cers: any[] = [1]
     productStoreID: number = 1;
 
+
+    imageIndex : number = 0;
+    imageLinkCurrent: string = ''
+
+
+    rateValue: string = '1' ;
+
     qrInfo$: QRScan;
     rateList$: any = [
         { ProductStoreId: 1, Rate: "1", FullName: "Khách hàng số 1", Mobile: "0349800629", Content: "Đánh giá sản phẩm này như này", TimeSend: "01/10/1991" },
@@ -97,6 +104,10 @@ export class AuthSignInComponent implements OnInit
 
                             this.qrInfo$ = (product?.data?.data !== undefined ? product?.data?.data : '');
 
+                            this.imageLinkCurrent = this.qrInfo$.Info?.ProductImageNames[0].link;
+
+                            this.caculatorRate(this.qrInfo$.Info?.RateValue , this.qrInfo$.Info?.RateCount)
+
                             this._qrService.getRateList(this.id)
                                 .subscribe((rateList) => {
 
@@ -122,12 +133,41 @@ export class AuthSignInComponent implements OnInit
 
 
     sendReview(value : string) : void {
+
+
+        if(this.form.value.rate_val.trimEnd().trim() === null || this.form.value.rate_val.trimEnd().trim() === '') {
+            alert('Vui lòng nhập đánh giá trước khi gửi!!')
+            return;
+        }
+
         this._qrService.sendRate(this.id , this.form.value.rating1 , this.qrInfo$.Info, this.form.value.rate_val)
             .subscribe((product) => {
                  alert('Gửi đánh giá thành công!')
                 location.reload();
 
             });
+    }
+
+    prevImage() : void {
+        if(this.imageIndex > 0){
+            this.imageIndex--;
+            this.imageLinkCurrent = this.qrInfo$.Info?.ProductImageNames[this.imageIndex].link
+        }
+    }
+
+
+    nextImage() : void {
+        if(this.imageIndex < this.qrInfo$.Info?.ProductImageNames?.length - 1 ){
+            this.imageIndex++;
+            this.imageLinkCurrent = this.qrInfo$.Info?.ProductImageNames[this.imageIndex].link
+        }
+    }
+
+    caculatorRate(num1 : string , num2 : string): void {
+
+        var cacheValue =  parseFloat(num1) / parseFloat(num2)
+
+        this.rateValue = cacheValue.toFixed(2);
     }
 
     // -----------------------------------------------------------------------------------------------------

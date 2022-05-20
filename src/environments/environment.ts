@@ -5,7 +5,7 @@
 export const environment = {
     production: false,
     hmr: false,
-    baseUrl : 'https://app-dev.annhan.asia/v1/product/',
+    baseUrl : 'https://app.annhan.asia/v1/product/',
     // baseUrl : 'http://127.0.0.1:3001/v1/',
 };
 
