@@ -106,6 +106,8 @@ export class AuthSignInComponent implements OnInit
 
                             this.imageLinkCurrent = this.qrInfo$.Info?.ProductImageNames[0].link;
 
+                            console.log(this.imageLinkCurrent)
+
                             this.caculatorRate(this.qrInfo$.Info?.RateValue , this.qrInfo$.Info?.RateCount)
 
                             this._qrService.getRateList(this.id)
@@ -168,6 +170,13 @@ export class AuthSignInComponent implements OnInit
         var cacheValue =  parseFloat(num1) / parseFloat(num2)
 
         this.rateValue = cacheValue.toFixed(2);
+    }
+
+    openImage(): void{
+
+        console.log(this.imageLinkCurrent)
+
+        window.open(this.imageLinkCurrent);
     }
 
     // -----------------------------------------------------------------------------------------------------

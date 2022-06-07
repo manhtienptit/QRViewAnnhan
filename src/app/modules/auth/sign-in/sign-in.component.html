@@ -52,7 +52,7 @@
                                                 <img
                                                     class="h-80 object-cover"
                                                     [src]= imageLinkCurrent
-                                                    onClick="window.open(this.imageLinkCurrent)"
+                                                    (click)="openImage()"
                                                 >
                                             </ng-container>
 
@@ -248,7 +248,7 @@
                                     <div class="flex-auto  prose prose-sm mt-10 border-t ">
                                         <p>
                                             <a
-                                                (href) = "qrInfo$.Info?.VideoGioiThieu"
+                                                [href] = "qrInfo$.Info?.VideoGioiThieu === null ? '' : qrInfo$.Info?.VideoGioiThieu[0].link"
                                                 rel="noreferrer"
                                                 target="_blank">Video giới thiệu
                                             </a>
@@ -257,7 +257,7 @@
                                     <div class="flex-auto  prose prose-sm">
                                         <p>
                                             <a
-                                                (href) = "qrInfo$.Info?.VideoHuongDan"
+                                                [href] = "qrInfo$.Info?.VideoHuongDan === null ? '' : qrInfo$.Info?.VideoHuongDan[0].link"
                                                 rel="noreferrer"
                                                 target="_blank">Video hướng dẫn
                                             </a>
