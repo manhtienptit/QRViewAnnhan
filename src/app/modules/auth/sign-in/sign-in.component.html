@@ -285,25 +285,26 @@
                                         src="assets/images/logo/bg_source.png">
                                     <!-- @formatter:on -->
                                     <!-- Content -->
-                                    <div class="z-10 relative w-full max-w-2xl" style="margin-left : 10px ; margin-right: 10px ; margin-bottom: 15px">
-                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4">
-                                           <a class="b"> Thành phần </a> : {{qrInfo$.Info?.ProductThanhPhan}}
+                                    <div class="z-10 relative" style="margin-left : 10px ; margin-bottom: 15px ;overflow-x: scroll;">
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4" style=" white-space: pre;">
+                                            <a class="b" > Thành phần </a> : <br>
+                                                    {{qrInfo$.Info?.ProductThanhPhan}}
                                         </div>
 
-                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4">
-                                            Hạn SD : {{qrInfo$.Info?.ProductHanSD}}
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4" style=" white-space: pre; margin-right: 10px">
+                                            Hạn SD : <br> {{qrInfo$.Info?.ProductHanSD}}
                                         </div>
-                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4">
-                                            Nơi SX : {{qrInfo$.Info?.ProductNoiSX}}
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4" style=" white-space: pre; margin-right: 10px">
+                                            Nơi SX : <br> {{qrInfo$.Info?.ProductNoiSX}}
                                         </div>
-                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4">
-                                            Công dụng : {{qrInfo$.Info?.ProductCongDung}}
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4" style=" white-space: pre; margin-right: 10px">
+                                            Công dụng : <br> {{qrInfo$.Info?.ProductCongDung}}
                                         </div>
-                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4">
-                                            Cách dùng : {{qrInfo$.Info?.ProductCachDung}}
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4" style=" white-space: pre; word-wrap:break-word !important;">
+                                            Cách dùng : <br> {{qrInfo$.Info?.ProductCachDung}}
                                         </div>
-                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4">
-                                            Qui cách đóng gói : {{qrInfo$.Info?.ProductQuyCachDongGoi}}
+                                        <div class="mt-6 text-lg tracking-tight leading-6 text-white mr-4" style=" white-space: pre; margin-right: 10px">
+                                            Qui cách đóng gói : <br> {{qrInfo$.Info?.ProductQuyCachDongGoi}}
                                         </div>
 
 
